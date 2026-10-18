@@ -1,0 +1,208 @@
+[gd_scene format=3 uid="uid://da6cxbt5lanht"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgdk22h505rwr" path="res://assets/3D/weapons/gun/mesh/gun_model_anim_Cube_002.res" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c6cv6af4rljhn" path="res://scripts/player/movement_system/camera_system/camera_contrl.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://cjj50kfsrwvdf" path="res://scripts/player/movement_system/movement_state/movement_state_machine.gd" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://dukkcbv4m84qq" path="res://scripts/player/movement_system/movement_state/states/idle_state.gd" id="3_hqtel"]
+[ext_resource type="Script" uid="uid://dyfcv3u7nr3t0" path="res://scripts/player/movement_system/movement_state/states/air_state.gd" id="4_sweqy"]
+[ext_resource type="Script" uid="uid://bk1lhrrw5tnqj" path="res://scripts/player/movement_system/movement_state/states/walk_state.gd" id="5_1jxqw"]
+[ext_resource type="Script" uid="uid://bs7e21i2h8siw" path="res://scripts/player/movement_system/movement_state/states/run_state.gd" id="6_1jxqw"]
+[ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/movement_system/action_system/interaction_manager.gd" id="7_b26j0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
+radius = 0.25
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhunq"]
+radius = 0.25
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.57740253, -0.23955393, -0.77955365)]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "ads_down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.15, -0.5), Vector3(0.57740253, -0.23955393, -0.77955365)]
+}
+
+[sub_resource type="Animation" id="Animation_i3pqv"]
+resource_name = "ads_up"
+length = 0.4
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.57740253, -0.23955393, -0.77955365, 0.4, 1, 0, -0.15, -0.5)
+
+[sub_resource type="Animation" id="Animation_sweqy"]
+resource_name = "fire_"
+length = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666666, 0.12, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.57740253, -0.23955393, -0.77955365), Vector3(0.577, -0.24, -0.6), Vector3(0.577, -0.24, -0.6), Vector3(0.57740253, -0.23955393, -0.77955365)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.08726646, 0, 0), Vector3(0.2617994, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2hs0m"]
+resource_name = "fire_ads"
+length = 0.24
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.23333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.08726646, 0, 0), Vector3(0.2617994, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.15, -0.55), Vector3(0, -0.15, -0.45), Vector3(0, -0.15, -0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_hqtel"]
+resource_name = "idle"
+length = 0.06666667
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.57740253, -0.23955393, -0.77955365)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sweqy"]
+_data = {
+&"RESET": SubResource("Animation_onrkg"),
+&"ads_down": SubResource("Animation_4flbx"),
+&"ads_up": SubResource("Animation_i3pqv"),
+&"fire_": SubResource("Animation_sweqy"),
+&"fire_ads": SubResource("Animation_2hs0m"),
+&"idle": SubResource("Animation_hqtel")
+}
+
+[node name="player" type="CharacterBody3D" unique_id=664553519]
+collision_layer = 5
+
+[node name="collision" type="CollisionShape3D" parent="." unique_id=824496373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000598073, 0.0018787086, -0.00030350685)
+shape = SubResource("CapsuleShape3D_riqys")
+
+[node name="mesh" type="MeshInstance3D" parent="collision" unique_id=2066215904]
+mesh = SubResource("CapsuleMesh_bhunq")
+
+[node name="Manager" type="Node3D" parent="." unique_id=1645068689]
+
+[node name="CameraCtrl" type="Node3D" parent="Manager" unique_id=1179721897 node_paths=PackedStringArray("player", "cam")]
+script = ExtResource("1_onrkg")
+player = NodePath("../..")
+cam = NodePath("../../playerCam")
+
+[node name="MovementSystem" type="Node3D" parent="Manager" unique_id=1735917536 node_paths=PackedStringArray("default_movement_state", "player")]
+script = ExtResource("2_i3pqv")
+default_movement_state = NodePath("idleState")
+player = NodePath("../..")
+
+[node name="idleState" type="Node3D" parent="Manager/MovementSystem" unique_id=1772953256 node_paths=PackedStringArray("walk_state", "run_state", "air_state")]
+script = ExtResource("3_hqtel")
+walk_state = NodePath("../walkState")
+run_state = NodePath("../runState")
+max_speed = 0.0
+accel = 0.0
+air_state = NodePath("../airState")
+metadata/_custom_type_script = "uid://chw6rb8e5cq6t"
+
+[node name="airState" type="Node3D" parent="Manager/MovementSystem" unique_id=1574742027]
+script = ExtResource("4_sweqy")
+metadata/_custom_type_script = "uid://chw6rb8e5cq6t"
+
+[node name="walkState" type="Node3D" parent="Manager/MovementSystem" unique_id=910467673 node_paths=PackedStringArray("idle_state", "run_state")]
+script = ExtResource("5_1jxqw")
+idle_state = NodePath("../idleState")
+run_state = NodePath("../runState")
+metadata/_custom_type_script = "uid://chw6rb8e5cq6t"
+
+[node name="runState" type="Node3D" parent="Manager/MovementSystem" unique_id=1252206302 node_paths=PackedStringArray("idle_state", "run_state")]
+script = ExtResource("6_1jxqw")
+idle_state = NodePath("../idleState")
+run_state = NodePath(".")
+metadata/_custom_type_script = "uid://chw6rb8e5cq6t"
+
+[node name="InteractionManager" type="Node3D" parent="Manager" unique_id=1275186375]
+script = ExtResource("7_b26j0")
+metadata/_custom_type_script = "uid://cnxrp05qe5174"
+
+[node name="playerCam" type="Camera3D" parent="." unique_id=190024261]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
+
+[node name="gun" type="MeshInstance3D" parent="playerCam" unique_id=1031976048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57740253, -0.23955393, -0.77955365)
+mesh = ExtResource("1_4flbx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="playerCam/gun" unique_id=1225596494]
+libraries/ = SubResource("AnimationLibrary_sweqy")
