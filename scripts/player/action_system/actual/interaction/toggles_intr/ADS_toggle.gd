@@ -10,6 +10,8 @@ class_name ADSInteraction
 @export_range(0.0, 0.5, 0.01)
 var blend_time: float = 0.05
 
+signal toggle_aim(state: bool)
+
 
 func on_active() -> void:
 	if not is_instance_valid(animation_player):
@@ -17,6 +19,7 @@ func on_active() -> void:
 
 	if animation_player.has_animation(ads_up):
 		animation_player.play(ads_up, blend_time)
+	toggle_aim.emit(true)
 
 
 func on_deactive() -> void:
@@ -25,3 +28,4 @@ func on_deactive() -> void:
 
 	if animation_player.has_animation(ads_down):
 		animation_player.play(ads_down, blend_time)
+		toggle_aim.emit(false)

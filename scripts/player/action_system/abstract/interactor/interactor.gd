@@ -11,6 +11,7 @@ var cur_act: Interaction
 var pending_act: Interaction
 
 
+
 # -------------------------
 # EDITOR
 # -------------------------
@@ -95,6 +96,9 @@ func _state_handling(delta: float) -> void:
 	if best_request == null:
 		return
 
+	if best_request is Shoot:
+		_start_prioritized(delta, best_request)
+
 	# Store the best request until the current action finishes.
 	if pending_act == null or best_request.tag < pending_act.tag:
 		pending_act = best_request
@@ -156,6 +160,13 @@ func _start_pending(delta: float) -> void:
 
 	if not cur_act.is_active():
 		cur_act = null
+
+
+func _start_prioritized(delta: float, action: Shoot) -> void:
+	if not _is_pending_valid(action): # Using the same validation as pending act
+		return
+
+	action.request(delta)
 
 
 # -------------------------
