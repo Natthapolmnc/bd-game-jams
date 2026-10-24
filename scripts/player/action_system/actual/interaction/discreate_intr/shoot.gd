@@ -19,7 +19,6 @@ func activate()->void:
 	var parent: GunInteractor = get_parent()
 
 	if parent.is_aiming():
-		_active = true
 		on_active()
 		cooldown_time=action_time
 
@@ -30,5 +29,3 @@ func on_active() -> void:
 
 	if animation_player.has_animation(fire_ads):
 		animation_player.play(fire_ads, blend_time)
-	
-	_active = false

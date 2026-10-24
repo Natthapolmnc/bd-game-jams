@@ -1,6 +1,6 @@
 extends ContinuousInteraction
-
 class_name ToggleADS
+
 
 var gun_anim_player:AnimationPlayer
 @export var ads_up_anim:String

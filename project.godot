@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="sloth-fear"
-run/main_scene="uid://dmq8xx4hv1abe"
+run/main_scene="uid://bt4hi8y6odgg6"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -23,6 +23,10 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/at-icons/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [input]
 

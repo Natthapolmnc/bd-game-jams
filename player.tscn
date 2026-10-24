@@ -9,8 +9,11 @@
 [ext_resource type="Script" uid="uid://decpy672tf8pg" path="res://scripts/player/movement_system/movement_state/states/crouch_state.gd" id="6_b26j0"]
 [ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/action_system/interactor_manager.gd" id="7_b26j0"]
 [ext_resource type="Script" uid="uid://x3ta6pm3tek5" path="res://scripts/player/action_system/actual/interactor/gun_interactor.gd" id="8_b26j0"]
-[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_toggle.gd" id="9_n7ghd"]
+[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_cont.gd" id="9_n7ghd"]
 [ext_resource type="Script" uid="uid://cy3qpyevvny13" path="res://scripts/player/action_system/actual/interaction/discreate_intr/shoot.gd" id="10_nvl01"]
+[ext_resource type="Script" uid="uid://4gr06rem5h5r" path="res://scripts/player/resource_system/resource_manager.gd" id="11_bwjto"]
+[ext_resource type="Script" uid="uid://0wd3x2uxdwn5" path="res://scripts/player/resource_system/actual/stamina_bar.gd" id="11_ivps1"]
+[ext_resource type="Script" uid="uid://c5mnay0iog70y" path="res://scripts/player/resource_system/actual/insanity_bar.gd" id="12_urp6f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
 radius = 0.25
@@ -231,6 +234,25 @@ script = ExtResource("10_nvl01")
 animation_player = NodePath("../../../../CamCrouchPivot/playerCam/gunVisualPivot/gun/AnimationPlayer")
 activate_key = &"shoot"
 metadata/_custom_type_script = "uid://cy3qpyevvny13"
+
+[node name="ResourceBar" type="Node3D" parent="Manager" unique_id=77856005]
+script = ExtResource("11_bwjto")
+
+[node name="staminaBar" type="Node3D" parent="Manager/ResourceBar" unique_id=605887090]
+script = ExtResource("11_ivps1")
+start_value = 100.0
+fill_speed = 7.0
+deplete_speed = 7.0
+
+[node name="insanityBar" type="Node3D" parent="Manager/ResourceBar" unique_id=29960309]
+script = ExtResource("12_urp6f")
+min_ABNORMAL_value = 30.0
+max_ABNORMAL_value = 60.0
+ABNORMAL_fill_speed = 9.0
+INSANE_fill_speed = 11.0
+fill_speed = 7.0
+deplete_speed = 2.5
+regress_cooldown = 5.0
 
 [node name="CamCrouchPivot" type="Node3D" parent="." unique_id=433111817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
