@@ -10,7 +10,11 @@
 [ext_resource type="Script" uid="uid://decpy672tf8pg" path="res://scripts/player/movement_system/movement_state/states/crouch_state.gd" id="6_b26j0"]
 [ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/action_system/interactor_manager.gd" id="7_b26j0"]
 [ext_resource type="Script" uid="uid://x3ta6pm3tek5" path="res://scripts/player/action_system/actual/interactor/gun_interactor.gd" id="8_b26j0"]
-[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_toggle.gd" id="9_n7ghd"]
+[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_cont.gd" id="9_n7ghd"]
+[ext_resource type="Script" uid="uid://cy3qpyevvny13" path="res://scripts/player/action_system/actual/interaction/discreate_intr/shoot.gd" id="10_nvl01"]
+[ext_resource type="Script" uid="uid://4gr06rem5h5r" path="res://scripts/player/resource_system/resource_manager.gd" id="11_bwjto"]
+[ext_resource type="Script" uid="uid://0wd3x2uxdwn5" path="res://scripts/player/resource_system/actual/stamina_bar.gd" id="11_ivps1"]
+[ext_resource type="Script" uid="uid://c5mnay0iog70y" path="res://scripts/player/resource_system/actual/insanity_bar.gd" id="12_urp6f"]
 [ext_resource type="Script" uid="uid://chr2r7qwmcpuf" path="res://ui_interactor.gd" id="11_urp6f"]
 [ext_resource type="Script" uid="uid://dw1wv1y8ec78x" path="res://scripts/player/action_system/actual/interaction/discrt_intr/note_intr.gd" id="12_bwjto"]
 [ext_resource type="Script" uid="uid://cmnk4a6uqn8c3" path="res://scripts/notes/note_manager.gd" id="12_ivps1"]
@@ -64,7 +68,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_4flbx"]
 resource_name = "ads_down"
-length = 0.4
+length = 0.26666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -72,7 +76,7 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.26666668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -0.15, -0.5), Vector3(0.57740253, -0.23955393, -0.77955365)]
@@ -80,14 +84,14 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 resource_name = "ads_up"
-length = 0.43333334
+length = 0.4
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.57740253, -0.23955393, -0.77955365, 0.4, 1, 0, -0.15, -0.5)
+tracks/0/keys = PackedFloat32Array(0, 1, 0.57740253, -0.23955393, -0.77955365, 0.16666667, 1, 0, -0.15, -0.5)
 
 [sub_resource type="Animation" id="Animation_sweqy"]
 resource_name = "fire_"
@@ -274,8 +278,6 @@ metadata/_custom_type_script = "uid://cnxrp05qe5174"
 
 [node name="GunInteractor" type="Node" parent="Manager/InteractorManager" unique_id=25104214]
 script = ExtResource("8_b26j0")
-start_equipped = null
-enabled = null
 metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="ADSInteraction" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=2095033685 node_paths=PackedStringArray("animation_player")]
@@ -284,44 +286,8 @@ animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportCont
 ads_up = &"ads_up"
 ads_down = &"ads_down"
 activate_key = &"aim_down_sight"
+release_policy = 1
 metadata/_custom_type_script = "uid://decutsrjlb5io"
-
-[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452 node_paths=PackedStringArray("interaction_ray")]
-script = ExtResource("11_urp6f")
-interaction_ray = NodePath("../../../CamCrouchPivot/WorldCam/interactRay")
-metadata/_custom_type_script = "uid://dxehxkxroe1j1"
-
-[node name="NoteInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=729974195 node_paths=PackedStringArray("note_manager")]
-script = ExtResource("12_bwjto")
-note_manager = NodePath("../../../../NoteManager")
-activate_key = &"event"
-metadata/_custom_type_script = "uid://c5gqs5ubr82f4"
-
-[node name="SearchInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=1805491755 node_paths=PackedStringArray("utility_interactor", "cursor_manager", "inventory_manager")]
-script = ExtResource("13_q13i1")
-utility_interactor = NodePath("..")
-cursor_manager = NodePath("../../../CursorManager")
-inventory_manager = NodePath("../../../InventoryManager")
-search_duration = 8.0
-qte_chance = 13.0
-activate_key = &"event"
-metadata/_custom_type_script = "uid://c5gqs5ubr82f4"
-
-[node name="CursorManager" type="CanvasLayer" parent="Manager" unique_id=610399320]
-script = ExtResource("13_606se")
-
-[node name="Crosshair" type="Control" parent="Manager/CursorManager" unique_id=1301160269]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("14_u1c27")
-
-[node name="InventoryManager" type="Node3D" parent="Manager" unique_id=666717420]
-script = ExtResource("15_op7ga")
 
 [node name="CamCrouchPivot" type="Node3D" parent="." unique_id=433111817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)

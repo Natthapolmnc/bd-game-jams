@@ -26,6 +26,11 @@ func is_movement_blocked() -> bool:
 
 	return false
 
+
+func canceled_by_movement() -> void:
+	pass
+
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return

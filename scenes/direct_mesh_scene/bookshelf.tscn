@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bxsvmjd1uadtm"]
+
+[ext_resource type="PackedScene" uid="uid://dg56prgl656al" path="res://assets/3D/glbs/Decoration/Bookshelf.glb" id="1_n5kh0"]
+
+[node name="Bookshelf" unique_id=72785072 instance=ExtResource("1_n5kh0")]
+
+[node name="Book_0001" parent="." index="0" unique_id=821624988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0002" parent="." index="1" unique_id=1070564419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0003" parent="." index="2" unique_id=1216518183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0004" parent="." index="3" unique_id=1082701542]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0005" parent="." index="4" unique_id=326027252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0006" parent="." index="5" unique_id=193653520]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0007" parent="." index="6" unique_id=984490882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0008" parent="." index="7" unique_id=196613070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0009" parent="." index="8" unique_id=400916574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0010" parent="." index="9" unique_id=1800281000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0011" parent="." index="10" unique_id=728221293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0012" parent="." index="11" unique_id=1777317159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0013" parent="." index="12" unique_id=1719238361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0014" parent="." index="13" unique_id=1851549977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0015" parent="." index="14" unique_id=1080755332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0016" parent="." index="15" unique_id=278356610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0017" parent="." index="16" unique_id=1188004433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0018" parent="." index="17" unique_id=1834591164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0019" parent="." index="18" unique_id=1241440197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Book_0020" parent="." index="19" unique_id=976177556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Bookshelf01" parent="." index="20" unique_id=1473408590]
+transform = Transform3D(1.7881393e-07, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 1.7881393e-07, 0, -0.5, 0)
