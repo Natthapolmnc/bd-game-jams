@@ -12,6 +12,7 @@ albedo_color = Color(0.82978684, 0.68495023, 0.5066362, 1)
 size = Vector2(0.22, 0.15)
 
 [sub_resource type="SystemFont" id="SystemFont_6f8o3"]
+subpixel_positioning = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr0ht"]
 albedo_color = Color(0.17, 0.17, 0.17, 1)

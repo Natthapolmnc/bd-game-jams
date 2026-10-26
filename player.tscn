@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/action_system/interactor_manager.gd" id="7_b26j0"]
 [ext_resource type="Script" uid="uid://x3ta6pm3tek5" path="res://scripts/player/action_system/actual/interactor/gun_interactor.gd" id="8_b26j0"]
 [ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_toggle.gd" id="9_n7ghd"]
-[ext_resource type="Script" uid="uid://chr2r7qwmcpuf" path="res://ui_interactor.gd" id="11_urp6f"]
+[ext_resource type="Script" uid="uid://chr2r7qwmcpuf" path="res://scripts/UI/ui_interactor.gd" id="11_urp6f"]
 [ext_resource type="Script" uid="uid://dw1wv1y8ec78x" path="res://scripts/player/action_system/actual/interaction/discrt_intr/note_intr.gd" id="12_bwjto"]
 [ext_resource type="Script" uid="uid://cmnk4a6uqn8c3" path="res://scripts/notes/note_manager.gd" id="12_ivps1"]
 [ext_resource type="Script" uid="uid://bdrg0ocsalp01" path="res://scripts/player/cursor_management/cursor_manager.gd" id="13_606se"]
@@ -19,15 +19,15 @@
 [ext_resource type="Script" uid="uid://lma4gdyu34ef" path="res://scripts/player/cursor_management/crosshair.gd" id="14_u1c27"]
 [ext_resource type="Script" uid="uid://bug2jqp7lwnru" path="res://scripts/player/inventory_managerment/inventory_manager.gd" id="15_op7ga"]
 [ext_resource type="Texture2D" uid="uid://bj6auy6448hks" path="res://assets/3D/item/bullet.png" id="19_7hik5"]
-[ext_resource type="Script" uid="uid://jrmp6rnx7c2w" path="res://item_ui.gd" id="19_qtqh7"]
+[ext_resource type="Script" uid="uid://jrmp6rnx7c2w" path="res://scripts/UI/item_ui.gd" id="19_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://0yoooijollht" path="res://assets/3D/item/match_cropped.png" id="20_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://dy8b7etgxn2ca" path="res://assets/3D/item/picture.png" id="21_2wuci"]
 [ext_resource type="Texture2D" uid="uid://brnhbea0141tn" path="res://assets/3D/item/pocketwatch.png" id="22_iruf7"]
 [ext_resource type="Texture2D" uid="uid://qq8asgxrwiqs" path="res://assets/3D/item/dogtag.png" id="23_j5n4i"]
 [ext_resource type="Texture2D" uid="uid://cajkaayvkk6r6" path="res://assets/3D/item/book.png" id="24_634y6"]
-[ext_resource type="Texture2D" uid="uid://porvguxpm744" path="res://assets/UI/eye_insanity.png" id="25_efrwb"]
-[ext_resource type="Texture2D" uid="uid://dbnt0ld7rmxvo" path="res://assets/UI/stamina.png" id="26_hiqhm"]
-[ext_resource type="Script" uid="uid://cq6uoo8gmf27g" path="res://qte_hint.gd" id="28_2wuci"]
+[ext_resource type="Texture2D" uid="uid://porvguxpm744" path="res://assets/UI/Bar/eye_insanity.png" id="25_efrwb"]
+[ext_resource type="Texture2D" uid="uid://dbnt0ld7rmxvo" path="res://assets/UI/Bar/stamina.png" id="26_hiqhm"]
+[ext_resource type="Script" uid="uid://cq6uoo8gmf27g" path="res://scripts/UI/qte_hint.gd" id="28_2wuci"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
 radius = 0.25
@@ -189,6 +189,7 @@ width = 93
 height = 51
 
 [sub_resource type="SystemFont" id="SystemFont_qr0ht"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_riqys"]
 line_spacing = 3.275
@@ -297,9 +298,8 @@ note_manager = NodePath("../../../../NoteManager")
 activate_key = &"event"
 metadata/_custom_type_script = "uid://c5gqs5ubr82f4"
 
-[node name="SearchInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=1805491755 node_paths=PackedStringArray("utility_interactor", "cursor_manager", "inventory_manager")]
+[node name="SearchInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=1805491755 node_paths=PackedStringArray("cursor_manager", "inventory_manager")]
 script = ExtResource("13_q13i1")
-utility_interactor = NodePath("..")
 cursor_manager = NodePath("../../../CursorManager")
 inventory_manager = NodePath("../../../InventoryManager")
 search_duration = 8.0
