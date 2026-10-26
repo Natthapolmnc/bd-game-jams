@@ -294,9 +294,14 @@ activate_key = &"aim_down_sight"
 release_policy = 1
 metadata/_custom_type_script = "uid://decutsrjlb5io"
 
-[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452 node_paths=PackedStringArray("interaction_ray")]
-script = ExtResource("11_urp6f")
-interaction_ray = NodePath("../../../CamCrouchPivot/WorldCam/interactRay")
+[node name="Shoot" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=1116245431 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("11_iruf7")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
+activate_key = &"shoot"
+metadata/_custom_type_script = "uid://cy3qpyevvny13"
+
+[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452]
+script = ExtResource("11_2wuci")
 metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="NoteInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=729974195 node_paths=PackedStringArray("note_manager")]
