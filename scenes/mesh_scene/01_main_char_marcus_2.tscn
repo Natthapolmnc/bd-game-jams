@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://rns0vnqitpkd"]
+
+[ext_resource type="PackedScene" uid="uid://bqoxv6skh8vqr" path="res://assets/3D/glbs/character/01MainChar_Marcus.glb" id="1_sca4r"]
+
+[node name="01MainChar_Marcus2" unique_id=493920236 instance=ExtResource("1_sca4r")]

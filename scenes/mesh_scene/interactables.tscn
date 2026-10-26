@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c8n6150q336kr"]
+
+[ext_resource type="PackedScene" uid="uid://bprq3gus63vvn" path="res://assets/3D/glbs/interacterble/Interactables.glb" id="1_egxyf"]
+[ext_resource type="PackedScene" uid="uid://c1sieh38t1ilf" path="res://scenes/direct_mesh_scene/Bed1.tscn" id="2_tfem2"]
+
+[node name="Interactables" unique_id=164376231 instance=ExtResource("1_egxyf")]
+
+[node name="Node3D" parent="." index="9" unique_id=1733480513 instance=ExtResource("2_tfem2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6002197, 0, 2.9971719)
