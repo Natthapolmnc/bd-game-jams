@@ -2,6 +2,7 @@ class_name InsanityBar
 extends ResourceBar
 
 
+
 enum STAGE { NORMAL, ABNORMAL, INSANE }
 
 var current_stage: STAGE = STAGE.NORMAL

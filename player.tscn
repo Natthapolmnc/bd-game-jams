@@ -10,19 +10,24 @@
 [ext_resource type="Script" uid="uid://decpy672tf8pg" path="res://scripts/player/movement_system/movement_state/states/crouch_state.gd" id="6_b26j0"]
 [ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/action_system/interactor_manager.gd" id="7_b26j0"]
 [ext_resource type="Script" uid="uid://x3ta6pm3tek5" path="res://scripts/player/action_system/actual/interactor/gun_interactor.gd" id="8_b26j0"]
-[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_toggle.gd" id="9_n7ghd"]
-[ext_resource type="Script" uid="uid://chr2r7qwmcpuf" path="res://ui_interactor.gd" id="11_urp6f"]
+[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_cont.gd" id="9_n7ghd"]
+[ext_resource type="Script" uid="uid://c3uvu21k33gve" path="res://scripts/player/action_system/actual/interactor/utilitiy_interactor.gd" id="11_2wuci"]
+[ext_resource type="Script" uid="uid://cy3qpyevvny13" path="res://scripts/player/action_system/actual/interaction/discreate_intr/shoot.gd" id="11_iruf7"]
 [ext_resource type="Script" uid="uid://dw1wv1y8ec78x" path="res://scripts/player/action_system/actual/interaction/discrt_intr/note_intr.gd" id="12_bwjto"]
 [ext_resource type="Script" uid="uid://cmnk4a6uqn8c3" path="res://scripts/notes/note_manager.gd" id="12_ivps1"]
 [ext_resource type="Script" uid="uid://bdrg0ocsalp01" path="res://scripts/player/cursor_management/cursor_manager.gd" id="13_606se"]
 [ext_resource type="Script" uid="uid://bevyptdnhnxrn" path="res://scripts/player/action_system/actual/interaction/cont_intr/search.gd" id="13_q13i1"]
 [ext_resource type="Script" uid="uid://lma4gdyu34ef" path="res://scripts/player/cursor_management/crosshair.gd" id="14_u1c27"]
 [ext_resource type="Script" uid="uid://bug2jqp7lwnru" path="res://scripts/player/inventory_managerment/inventory_manager.gd" id="15_op7ga"]
+[ext_resource type="Script" uid="uid://4gr06rem5h5r" path="res://scripts/player/resource_system/resource_manager.gd" id="18_efrwb"]
 [ext_resource type="Texture2D" uid="uid://bj6auy6448hks" path="res://assets/3D/item/bullet.png" id="19_7hik5"]
+[ext_resource type="Script" uid="uid://c5mnay0iog70y" path="res://scripts/player/resource_system/actual/insanity_bar.gd" id="19_hiqhm"]
 [ext_resource type="Script" uid="uid://jrmp6rnx7c2w" path="res://scripts/UI/item_ui.gd" id="19_qtqh7"]
 [ext_resource type="Texture2D" uid="uid://0yoooijollht" path="res://assets/3D/item/match_cropped.png" id="20_qtqh7"]
+[ext_resource type="Script" uid="uid://0wd3x2uxdwn5" path="res://scripts/player/resource_system/actual/stamina_bar.gd" id="20_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://dy8b7etgxn2ca" path="res://assets/3D/item/picture.png" id="21_2wuci"]
 [ext_resource type="Texture2D" uid="uid://brnhbea0141tn" path="res://assets/3D/item/pocketwatch.png" id="22_iruf7"]
+[ext_resource type="Script" uid="uid://ck4gjp2w85qxr" path="res://scripts/UI/bars.gd" id="23_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://qq8asgxrwiqs" path="res://assets/3D/item/dogtag.png" id="23_j5n4i"]
 [ext_resource type="Texture2D" uid="uid://cajkaayvkk6r6" path="res://assets/3D/item/book.png" id="24_634y6"]
 [ext_resource type="Texture2D" uid="uid://porvguxpm744" path="res://assets/UI/Bar/eye_insanity.png" id="25_efrwb"]
@@ -188,6 +193,9 @@ gradient = SubResource("Gradient_bwjto")
 width = 93
 height = 51
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hiqhm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="SystemFont" id="SystemFont_qr0ht"]
 subpixel_positioning = 0
 
@@ -286,9 +294,14 @@ activate_key = &"aim_down_sight"
 release_policy = 1
 metadata/_custom_type_script = "uid://decutsrjlb5io"
 
-[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452 node_paths=PackedStringArray("interaction_ray")]
-script = ExtResource("11_urp6f")
-interaction_ray = NodePath("../../../CamCrouchPivot/WorldCam/interactRay")
+[node name="Shoot" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=1116245431 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("11_iruf7")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
+activate_key = &"shoot"
+metadata/_custom_type_script = "uid://cy3qpyevvny13"
+
+[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452]
+script = ExtResource("11_2wuci")
 metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="NoteInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=729974195 node_paths=PackedStringArray("note_manager")]
@@ -321,6 +334,28 @@ script = ExtResource("14_u1c27")
 
 [node name="InventoryManager" type="Node3D" parent="Manager" unique_id=666717420]
 script = ExtResource("15_op7ga")
+
+[node name="ResourceManager" type="Node" parent="Manager" unique_id=1466377429]
+script = ExtResource("18_efrwb")
+metadata/_custom_type_script = "uid://4gr06rem5h5r"
+
+[node name="InsanityBar" type="Node" parent="Manager/ResourceManager" unique_id=137596958]
+script = ExtResource("19_hiqhm")
+min_ABNORMAL_value = 30.0
+max_ABNORMAL_value = 60.0
+ABNORMAL_fill_speed = 5.0
+INSANE_fill_speed = 8.0
+fill_speed = 3.0
+deplete_speed = 3.0
+regress_cooldown = 5.0
+metadata/_custom_type_script = "uid://c5mnay0iog70y"
+
+[node name="StaminaBar" type="Node" parent="Manager/ResourceManager" unique_id=1898820027]
+script = ExtResource("20_tkwlq")
+start_value = 100.0
+fill_speed = 8.0
+deplete_speed = 5.0
+metadata/_custom_type_script = "uid://0wd3x2uxdwn5"
 
 [node name="CamCrouchPivot" type="Node3D" parent="." unique_id=433111817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
@@ -473,20 +508,21 @@ icon_alignment = 1
 [node name="UtilityCanvas" type="CanvasLayer" parent="." unique_id=53385477]
 layer = 15
 
-[node name="Bars2" type="VBoxContainer" parent="UtilityCanvas" unique_id=1944467571]
+[node name="Bars" type="VBoxContainer" parent="UtilityCanvas" unique_id=1944467571]
 offset_left = 16.0
 offset_top = 544.0
 offset_right = 140.0
 offset_bottom = 638.0
+script = ExtResource("23_hiqhm")
 
-[node name="bar" type="HBoxContainer" parent="UtilityCanvas/Bars2" unique_id=1677842595]
+[node name="insanity" type="HBoxContainer" parent="UtilityCanvas/Bars" unique_id=1677842595]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UtilityCanvas/Bars2/bar" unique_id=662659981]
+[node name="MarginContainer" type="MarginContainer" parent="UtilityCanvas/Bars/insanity" unique_id=662659981]
 layout_mode = 2
 theme_override_constants/margin_right = 10
 
-[node name="TextureRect" type="TextureRect" parent="UtilityCanvas/Bars2/bar/MarginContainer" unique_id=1977555770]
+[node name="TextureRect" type="TextureRect" parent="UtilityCanvas/Bars/insanity/MarginContainer" unique_id=1977555770]
 custom_minimum_size = Vector2(60, 45)
 custom_maximum_size = Vector2(60, 60)
 propagate_maximum_size = true
@@ -495,21 +531,21 @@ texture = ExtResource("25_efrwb")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="ProgressBar" type="ProgressBar" parent="UtilityCanvas/Bars2/bar" unique_id=1007963678]
+[node name="ProgressBar" type="ProgressBar" parent="UtilityCanvas/Bars/insanity" unique_id=1007963678]
 custom_minimum_size = Vector2(50, 10)
 custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 22
 
-[node name="bar2" type="HBoxContainer" parent="UtilityCanvas/Bars2" unique_id=1348766516]
+[node name="stamina" type="HBoxContainer" parent="UtilityCanvas/Bars" unique_id=1348766516]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UtilityCanvas/Bars2/bar2" unique_id=1201479899]
+[node name="MarginContainer" type="MarginContainer" parent="UtilityCanvas/Bars/stamina" unique_id=1201479899]
 layout_mode = 2
 theme_override_constants/margin_right = 10
 
-[node name="TextureRect" type="TextureRect" parent="UtilityCanvas/Bars2/bar2/MarginContainer" unique_id=2136276791]
+[node name="TextureRect" type="TextureRect" parent="UtilityCanvas/Bars/stamina/MarginContainer" unique_id=2136276791]
 custom_minimum_size = Vector2(60, 45)
 custom_maximum_size = Vector2(60, 60)
 propagate_maximum_size = true
@@ -518,12 +554,14 @@ texture = ExtResource("26_hiqhm")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="ProgressBar" type="ProgressBar" parent="UtilityCanvas/Bars2/bar2" unique_id=1939259237]
+[node name="ProgressBar" type="ProgressBar" parent="UtilityCanvas/Bars/stamina" unique_id=1939259237]
 custom_minimum_size = Vector2(50, 10)
 custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 22
+theme_override_styles/fill = SubResource("StyleBoxFlat_hiqhm")
+value = 100.0
 
 [node name="InventoryUI" type="Control" parent="UtilityCanvas" unique_id=32648185 node_paths=PackedStringArray("inv_manager")]
 layout_mode = 3

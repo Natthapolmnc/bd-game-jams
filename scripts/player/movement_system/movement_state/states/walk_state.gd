@@ -2,6 +2,8 @@
 extends MovementState
 class_name walkState
 
+
+
 @export_category("State Management")
 @export var idle_state: MovementState=null:
 	set(value):
@@ -18,6 +20,8 @@ class_name walkState
 		update_configuration_warnings()
 		crouch_state=value
 
+@export_category("Reference")
+@onready var resource_manager: ResourceManager = $"../../ResourceManager"
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
@@ -53,5 +57,5 @@ func _while_move(delta: float) -> void:
 	if input_dir == Vector2.ZERO:
 		switch_state.emit(idle_state)
 
-	elif Input.is_action_pressed("shift"):
+	elif Input.is_action_pressed("shift") and resource_manager.get_stamina()>10:
 		switch_state.emit(run_state)

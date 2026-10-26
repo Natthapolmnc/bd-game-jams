@@ -75,6 +75,7 @@ func tick_cooldown(delta: float) -> void:
 
 
 func activity_valid() -> bool:
+
 	if start_value == 100.0 and current_value > 0.0:
 		return true
 	
