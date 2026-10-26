@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c8gm8vli26lj3"
-path="res://.godot/imported/Door_template.glb-ce0c272d34c904eeda25109cf87b6b43.scn"
+uid="uid://csfsu2pm5ooho"
+path="res://.godot/imported/WalterP38.glb-ecb07084779dc8801dfb1123457e0eab.scn"
 
 [deps]
 
-source_file="res://assets/3D/glbs/interacterble/Door_template.glb"
-dest_files=["res://.godot/imported/Door_template.glb-ce0c272d34c904eeda25109cf87b6b43.scn"]
+source_file="res://assets/3D/glbs/gun/WalterP38.glb"
+dest_files=["res://.godot/imported/WalterP38.glb-ecb07084779dc8801dfb1123457e0eab.scn"]
 
 [params]
 

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://br0edsd2elkxx"]
+
+[ext_resource type="PackedScene" uid="uid://bd1e25kg6k8o8" path="res://assets/3D/glbs/Light/Lighting.glb" id="1_apwq5"]
+
+[node name="Lighting" unique_id=2096642330 instance=ExtResource("1_apwq5")]

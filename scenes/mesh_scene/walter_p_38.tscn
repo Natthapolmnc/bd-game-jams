@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bdcb2eius26nx"]
+
+[ext_resource type="PackedScene" uid="uid://csfsu2pm5ooho" path="res://assets/3D/glbs/gun/WalterP38.glb" id="1_8nsdw"]
+
+[node name="WalterP38" unique_id=625000762 instance=ExtResource("1_8nsdw")]
+
+[node name="P38Barrel" parent="." index="0" unique_id=2080160466]
+layers = 1023
+
+[node name="P38Cock" parent="." index="1" unique_id=1913230680]
+layers = 1023
+
+[node name="P38Grip" parent="." index="2" unique_id=2094783765]
+layers = 1023
+
+[node name="P38Handle" parent="." index="3" unique_id=1809078914]
+layers = 1023
+
+[node name="P38Slide" parent="." index="4" unique_id=2110444389]
+layers = 1023
+
+[node name="P38Trigger" parent="." index="5" unique_id=37500504]
+layers = 1023

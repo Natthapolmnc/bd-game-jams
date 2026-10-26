@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://0yoooijollht" path="res://assets/3D/item/match_cropped.png" id="20_qtqh7"]
 [ext_resource type="Script" uid="uid://0wd3x2uxdwn5" path="res://scripts/player/resource_system/actual/stamina_bar.gd" id="20_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://dy8b7etgxn2ca" path="res://assets/3D/item/picture.png" id="21_2wuci"]
+[ext_resource type="PackedScene" uid="uid://bdcb2eius26nx" path="res://scenes/mesh_scene/walter_p_38.tscn" id="21_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://brnhbea0141tn" path="res://assets/3D/item/pocketwatch.png" id="22_iruf7"]
 [ext_resource type="Script" uid="uid://ck4gjp2w85qxr" path="res://scripts/UI/bars.gd" id="23_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://qq8asgxrwiqs" path="res://assets/3D/item/dogtag.png" id="23_j5n4i"]
@@ -287,7 +288,7 @@ metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="ADSInteraction" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=2095033685 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("9_n7ghd")
-animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38/AnimationPlayer")
 ads_up = &"ads_up"
 ads_down = &"ads_down"
 activate_key = &"aim_down_sight"
@@ -296,7 +297,7 @@ metadata/_custom_type_script = "uid://decutsrjlb5io"
 
 [node name="Shoot" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=1116245431 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("11_iruf7")
-animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38/AnimationPlayer")
 activate_key = &"shoot"
 metadata/_custom_type_script = "uid://cy3qpyevvny13"
 
@@ -385,19 +386,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
 [node name="gunVisualPivot" type="Node3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport" unique_id=169449130]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
 
-[node name="gun" type="MeshInstance3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=1031976048]
+[node name="gun" type="MeshInstance3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=215671756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57740253, -0.23955393, -0.77955365)
+visible = false
 layers = 2
 mesh = ExtResource("1_4flbx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun" unique_id=1225596494]
+[node name="WalterP38" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=625000762 instance=ExtResource("21_tkwlq")]
+transform = Transform3D(-0.9466493, 0.05983397, -0.3166623, 0, 0.9826128, 0.18566662, 0.32226563, 0.17576118, -0.9301897, 0.19143176, -0.23955393, -0.2957235)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38" unique_id=1630014946]
+root_node = NodePath("../../gun")
 libraries/ = SubResource("AnimationLibrary_sweqy")
 
-[node name="ADSPoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun" unique_id=2082324859]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.28438532)
+[node name="ADSPoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38" unique_id=1261774635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57740253, -0.08955392, -0.49516833)
+visible = false
 
-[node name="Gunpoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/ADSPoint" unique_id=729084497]
+[node name="Gunpoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38/ADSPoint" unique_id=982837912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6387266)
+visible = false
 
 [node name="interactRay" type="RayCast3D" parent="CamCrouchPivot/WorldCam" unique_id=1234893791]
 target_position = Vector3(0, 0, -3)
