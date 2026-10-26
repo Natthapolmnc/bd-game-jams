@@ -10,8 +10,8 @@
 [ext_resource type="Script" uid="uid://decpy672tf8pg" path="res://scripts/player/movement_system/movement_state/states/crouch_state.gd" id="6_b26j0"]
 [ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/action_system/interactor_manager.gd" id="7_b26j0"]
 [ext_resource type="Script" uid="uid://x3ta6pm3tek5" path="res://scripts/player/action_system/actual/interactor/gun_interactor.gd" id="8_b26j0"]
-[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_toggle.gd" id="9_n7ghd"]
-[ext_resource type="Script" uid="uid://chr2r7qwmcpuf" path="res://ui_interactor.gd" id="11_urp6f"]
+[ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_cont.gd" id="9_n7ghd"]
+[ext_resource type="Script" uid="uid://c3uvu21k33gve" path="res://scripts/player/action_system/actual/interactor/utilitiy_interactor.gd" id="11_2wuci"]
 [ext_resource type="Script" uid="uid://dw1wv1y8ec78x" path="res://scripts/player/action_system/actual/interaction/discrt_intr/note_intr.gd" id="12_bwjto"]
 [ext_resource type="Script" uid="uid://cmnk4a6uqn8c3" path="res://scripts/notes/note_manager.gd" id="12_ivps1"]
 [ext_resource type="Script" uid="uid://bdrg0ocsalp01" path="res://scripts/player/cursor_management/cursor_manager.gd" id="13_606se"]
@@ -286,9 +286,8 @@ activate_key = &"aim_down_sight"
 release_policy = 1
 metadata/_custom_type_script = "uid://decutsrjlb5io"
 
-[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452 node_paths=PackedStringArray("interaction_ray")]
-script = ExtResource("11_urp6f")
-interaction_ray = NodePath("../../../CamCrouchPivot/WorldCam/interactRay")
+[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452]
+script = ExtResource("11_2wuci")
 metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="NoteInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=729974195 node_paths=PackedStringArray("note_manager")]

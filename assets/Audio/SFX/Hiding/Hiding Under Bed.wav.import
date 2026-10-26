@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bo6b52c8ofs2g"
+path="res://.godot/imported/Hiding Under Bed.wav-a7d1f1b415eee33284193e436e49a999.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Hiding/Hiding Under Bed.wav"
+dest_files=["res://.godot/imported/Hiding Under Bed.wav-a7d1f1b415eee33284193e436e49a999.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

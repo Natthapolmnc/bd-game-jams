@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cy3ews1m5jmkj"
+path="res://.godot/imported/Normal Item Pick Up.wav-7dd61bc675bc52fdf4b5bdcde50c608a.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Item/Normal Item Pick Up.wav"
+dest_files=["res://.godot/imported/Normal Item Pick Up.wav-7dd61bc675bc52fdf4b5bdcde50c608a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

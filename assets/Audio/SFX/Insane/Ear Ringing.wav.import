@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://diyckybapobbi"
+path="res://.godot/imported/Ear Ringing.wav-b5cefd87e9d63e7894727165cd62d77f.sample"
+
+[deps]
+
+source_file="res://assets/Audio/SFX/Insane/Ear Ringing.wav"
+dest_files=["res://.godot/imported/Ear Ringing.wav-b5cefd87e9d63e7894727165cd62d77f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
