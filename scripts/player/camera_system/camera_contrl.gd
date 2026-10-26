@@ -15,6 +15,23 @@ var walk_weight := 0.0
 @export var WALK_BOB_SMOOTH := 8.0
 
 
+@export_category("HEAD TILT SETTINGS")
+
+@export var ENABLE_HEAD_TILT := true
+
+@export_subgroup("MOVEMENT TILT")
+@export var ENABLE_MOVEMENT_TILT := true
+@export_range(0.0, 20.0, 0.5) var MOVE_TILT_ANGLE := 4.0
+
+@export_subgroup("MANUAL TILT")
+@export var ENABLE_MANUAL_TILT := false
+@export_range(0.0, 30.0, 0.5) var MANUAL_TILT_ANGLE := 12.0
+
+@export_subgroup("SMOOTHING")
+@export var TILT_SMOOTH := 8.0
+
+var current_tilt := 0.0
+
 @export_subgroup("VERTICAL BOB")
 @export var AIR_BOB_AMP := 0.08
 @export var AIR_BOB_SMOOTH := 7
@@ -49,19 +66,87 @@ var base_cam_position := Vector3.ZERO
 var yaw := 0.0
 var pitch := 0.0
 var air_offset := 0.0
-# ------------------------
+
+@export_category("Interaction Integration")
+@export var interactor_manager: InteractorManager
+
+# -------------------------
+# INPUT BLOCKING
+# -------------------------
+
+func is_look_blocked() -> bool:
+	if not is_instance_valid(interactor_manager):
+		return false
+
+	return interactor_manager.is_movement_blocked()
+
+# -------------------------
 # LOOK INPUT
-# ------------------------
-func _unhandled_input(event):
+# -------------------------
+
+func _unhandled_input(event: InputEvent) -> void:
+
+	# Block camera rotation during interactions.
+	if is_look_blocked():
+		return
+
+	# Only look around when mouse is captured.
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+
 	if event is InputEventMouseMotion:
 		yaw -= event.relative.x * MOUSE_SENS
 		pitch -= event.relative.y * MOUSE_SENS
-		pitch = clamp(pitch, MAX_LOOK_DOWN, MAX_LOOK_UP)
+
+		pitch = clampf(
+			pitch,
+			MAX_LOOK_DOWN,
+			MAX_LOOK_UP
+		)
+
 		_apply_look()
 
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
+func _handle_head_tilt(delta: float) -> void:
+	var target_tilt := 0.0
+
+	if ENABLE_HEAD_TILT:
+		# -------------------------
+		# MOVEMENT TILT
+		# -------------------------
+		if ENABLE_MOVEMENT_TILT and player.is_on_floor():
+			var local_velocity: Vector3 = (
+				player.global_basis.inverse() * player.velocity
+			)
+
+			var strafe_factor: float = clampf(
+				local_velocity.x / 5.0,
+				-1.0,
+				1.0
+			)
+
+			target_tilt -= strafe_factor * deg_to_rad(MOVE_TILT_ANGLE)
+
+		# -------------------------
+		# MANUAL TILT
+		# -------------------------
+		if ENABLE_MANUAL_TILT:
+			var lean_input: float = (
+				Input.get_action_strength("lean_right")
+				- Input.get_action_strength("lean_left")
+			)
+
+			target_tilt -= lean_input * deg_to_rad(MANUAL_TILT_ANGLE)
+
+	# -------------------------
+	# SMOOTH INTERPOLATION
+	# -------------------------
+	current_tilt = lerp_angle(
+		current_tilt,
+		target_tilt,
+		1.0 - exp(-TILT_SMOOTH * delta)
+	)
+
+	cam.rotation.z = current_tilt
 		
 func _handle_headbob(delta):
 	var horizontal_speed = Vector2(player.velocity.x, player.velocity.z).length()
@@ -170,18 +255,35 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_handle_headbob(delta)
+	_handle_head_tilt(delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	# Xbox right stick
+func _process(delta: float) -> void:
 
-	var joy_x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
-	var joy_y = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
+	# Block joystick rotation during interactions.
+	if is_look_blocked():
+		return
 
-	var joy_vec = Vector2(joy_x, joy_y)
+	var joy_x: float = (
+		Input.get_action_strength("look_right")
+		- Input.get_action_strength("look_left")
+	)
+
+	var joy_y: float = (
+		Input.get_action_strength("look_down")
+		- Input.get_action_strength("look_up")
+	)
+
+	var joy_vec := Vector2(joy_x, joy_y)
 
 	if joy_vec.length() > DEADZONE:
 		yaw -= joy_vec.x * JOY_SENS * delta
 		pitch -= joy_vec.y * JOY_SENS * delta
-		pitch = clamp(pitch, MAX_LOOK_DOWN, MAX_LOOK_UP)
+
+		pitch = clampf(
+			pitch,
+			MAX_LOOK_DOWN,
+			MAX_LOOK_UP
+		)
+
 		_apply_look()

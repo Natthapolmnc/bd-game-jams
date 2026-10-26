@@ -73,8 +73,6 @@ func _ready() -> void:
 				on_switch_state_signal
 			)
 
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 	if default_movement_state:
 		on_switch_state_signal(default_movement_state)
 			

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://dgp3gvmrh1cm8"]
+
+[ext_resource type="Script" uid="uid://5cj50rt53s4l" path="res://scripts/player/inventory_managerment/container_interactable.gd" id="1_tx00u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bhunq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w3awe"]
+size = Vector3(1, 0.076416016, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(1, 1.0913086, 1)
+
+[sub_resource type="Animation" id="Animation_nltmt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lid_mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.54699695, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dpqfa"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lid_mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.09973514, 0.54699695, -0.16345158), Vector3(0, 0.54699695, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6l6gd"]
+resource_name = "open"
+length = 0.43333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("lid_mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.54699695, 0), Vector3(0.09973514, 0.54699695, -0.16345158)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cp7wo"]
+_data = {
+&"RESET": SubResource("Animation_nltmt"),
+&"close": SubResource("Animation_dpqfa"),
+&"open": SubResource("Animation_6l6gd")
+}
+
+[node name="box" type="Node3D" unique_id=1928506992]
+script = ExtResource("1_tx00u")
+
+[node name="box_mesh" type="MeshInstance3D" parent="." unique_id=385222218]
+mesh = SubResource("BoxMesh_bhunq")
+
+[node name="lid_mesh" type="MeshInstance3D" parent="." unique_id=1727477587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54699695, 0)
+mesh = SubResource("BoxMesh_w3awe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=550593725]
+collision_layer = 256
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1647939257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045654297, 0)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="animPlayer" type="AnimationPlayer" parent="." unique_id=16683511]
+libraries/ = SubResource("AnimationLibrary_cp7wo")
