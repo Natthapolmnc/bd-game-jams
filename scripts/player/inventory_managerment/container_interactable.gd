@@ -72,7 +72,7 @@ var is_open: bool = false
 # -------------------------
 
 const HIGHLIGHT_SHADER = preload(
-	"res://scripts/interaction_highlight.gdshader"
+	"res://scripts/player/action_system/actual/interaction_highlight.gdshader"
 )
 
 var highlight_material: ShaderMaterial
@@ -124,8 +124,8 @@ func _generate_bullets() -> void:
 	var possible_bullets: Array[int] = [0, 1, 2]
 
 	var weights := PackedFloat32Array([
-		0.7,
-		0.2,
+		0.3,
+		0.6,
 		0.1
 	])
 

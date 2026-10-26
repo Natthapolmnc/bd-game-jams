@@ -7,7 +7,7 @@ class_name NoteWorld
 @onready var mesh: MeshInstance3D = $CollisionShape3D/mesh
 
 const HIGHLIGHT_SHADER = preload(
-    "res://scripts/interaction_highlight.gdshader"
+    "res://scripts/player/action_system/actual/interaction_highlight.gdshader"
 	
 )
 
