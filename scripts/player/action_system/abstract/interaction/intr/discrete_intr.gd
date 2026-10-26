@@ -2,6 +2,7 @@ extends Interaction
 
 class_name DiscreteInteraction
 
+var active_time: float = 0.0
 @export var action_time:float
 
 func is_active()->bool:

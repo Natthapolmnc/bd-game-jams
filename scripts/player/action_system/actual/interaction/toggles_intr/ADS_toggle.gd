@@ -14,7 +14,6 @@ var blend_time: float = 0.05
 func on_active() -> void:
 	if not is_instance_valid(animation_player):
 		return
-
 	if animation_player.has_animation(ads_up):
 		animation_player.play(ads_up, blend_time)
 
@@ -22,6 +21,5 @@ func on_active() -> void:
 func on_deactive() -> void:
 	if not is_instance_valid(animation_player):
 		return
-
 	if animation_player.has_animation(ads_down):
 		animation_player.play(ads_down, blend_time)

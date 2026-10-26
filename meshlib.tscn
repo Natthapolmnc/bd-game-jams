@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bnk3ejhnt06kw"]
+
+[ext_resource type="Script" uid="uid://ct10w6aj83a03" path="res://grid_map_2.gd" id="1_kt64y"]
+[ext_resource type="ArrayMesh" uid="uid://bdu6lefoinpyp" path="res://assets/3D/meshLib/tmp/Untitled_Cube.res" id="2_y0eie"]
+[ext_resource type="ArrayMesh" uid="uid://vsrsre1w2mwp" path="res://assets/3D/meshLib/tmp/Untitled_Cube_001.res" id="3_rjyms"]
+[ext_resource type="ArrayMesh" uid="uid://g6wbynu3r06q" path="res://assets/3D/meshLib/tmp/Untitled_Cube_002.res" id="4_df5hk"]
+
+[node name="Meshlib" type="Node3D" unique_id=1626057908]
+script = ExtResource("1_kt64y")
+
+[node name="stair" type="MeshInstance3D" parent="." unique_id=1522395170]
+mesh = ExtResource("2_y0eie")
+
+[node name="cube" type="MeshInstance3D" parent="." unique_id=466461629]
+mesh = ExtResource("3_rjyms")
+
+[node name="slab" type="MeshInstance3D" parent="." unique_id=1379143103]
+mesh = ExtResource("4_df5hk")

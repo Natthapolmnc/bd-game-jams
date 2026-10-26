@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ekw001kck1b8"]
+
+[ext_resource type="Script" uid="uid://chd7syp7ibbff" path="res://scripts/notes/note_obj.gd" id="1_yh6j8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(0.22600585, 0.001, 0.15460205)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bwjto"]
+albedo_color = Color(0.82978684, 0.68495023, 0.5066362, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bhunq"]
+size = Vector2(0.22, 0.15)
+
+[sub_resource type="SystemFont" id="SystemFont_6f8o3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr0ht"]
+albedo_color = Color(0.17, 0.17, 0.17, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_riqys"]
+material = SubResource("StandardMaterial3D_qr0ht")
+uv2_padding = 0.95
+text = "~~~~
+~~~~
+~~~~"
+font = SubResource("SystemFont_6f8o3")
+font_size = 111
+depth = 0.01
+offset = Vector2(1, 1.435)
+
+[node name="Note" type="StaticBody3D" unique_id=1542757117]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_yh6j8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=20457195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00020995736, 0.0002324218, -0.0002746582)
+shape = SubResource("BoxShape3D_bhunq")
+
+[node name="mesh" type="MeshInstance3D" parent="CollisionShape3D" unique_id=1351149699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00020995736, -0.0002324218, 0.0002746582)
+material_override = SubResource("StandardMaterial3D_bwjto")
+mesh = SubResource("PlaneMesh_bhunq")
+
+[node name="Text" type="MeshInstance3D" parent="CollisionShape3D/mesh" unique_id=1592513853]
+transform = Transform3D(2.2455026e-06, -0.043999515, 0.00037540792, -0.00047827998, -0.00020648655, -0.079994395, 0.0439974, 1.3113022e-09, -0.00086960953, -0.010903884, 0.0005965084, 0)
+mesh = SubResource("TextMesh_riqys")

@@ -2,6 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://bgdk22h505rwr" path="res://assets/3D/weapons/gun/mesh/gun_model_anim_Cube_002.res" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c6cv6af4rljhn" path="res://scripts/player/camera_system/camera_contrl.gd" id="1_b26j0"]
+[ext_resource type="PackedScene" uid="uid://c0eh7hwdp6k76" path="res://01MainChar_Marcus.glb" id="1_nvl01"]
 [ext_resource type="Script" uid="uid://cjj50kfsrwvdf" path="res://scripts/player/movement_system/movement_state/movement_state_machine.gd" id="2_i3pqv"]
 [ext_resource type="Script" uid="uid://dukkcbv4m84qq" path="res://scripts/player/movement_system/movement_state/states/idle_state.gd" id="3_hqtel"]
 [ext_resource type="Script" uid="uid://bk1lhrrw5tnqj" path="res://scripts/player/movement_system/movement_state/states/walk_state.gd" id="5_1jxqw"]
@@ -10,6 +11,23 @@
 [ext_resource type="Script" uid="uid://cnxrp05qe5174" path="res://scripts/player/action_system/interactor_manager.gd" id="7_b26j0"]
 [ext_resource type="Script" uid="uid://x3ta6pm3tek5" path="res://scripts/player/action_system/actual/interactor/gun_interactor.gd" id="8_b26j0"]
 [ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_toggle.gd" id="9_n7ghd"]
+[ext_resource type="Script" uid="uid://chr2r7qwmcpuf" path="res://ui_interactor.gd" id="11_urp6f"]
+[ext_resource type="Script" uid="uid://dw1wv1y8ec78x" path="res://scripts/player/action_system/actual/interaction/discrt_intr/note_intr.gd" id="12_bwjto"]
+[ext_resource type="Script" uid="uid://cmnk4a6uqn8c3" path="res://scripts/notes/note_manager.gd" id="12_ivps1"]
+[ext_resource type="Script" uid="uid://bdrg0ocsalp01" path="res://scripts/player/cursor_management/cursor_manager.gd" id="13_606se"]
+[ext_resource type="Script" uid="uid://bevyptdnhnxrn" path="res://scripts/player/action_system/actual/interaction/cont_intr/search.gd" id="13_q13i1"]
+[ext_resource type="Script" uid="uid://lma4gdyu34ef" path="res://scripts/player/cursor_management/crosshair.gd" id="14_u1c27"]
+[ext_resource type="Script" uid="uid://bug2jqp7lwnru" path="res://scripts/player/inventory_managerment/inventory_manager.gd" id="15_op7ga"]
+[ext_resource type="Texture2D" uid="uid://bj6auy6448hks" path="res://assets/3D/item/bullet.png" id="19_7hik5"]
+[ext_resource type="Script" uid="uid://jrmp6rnx7c2w" path="res://item_ui.gd" id="19_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://0yoooijollht" path="res://assets/3D/item/match_cropped.png" id="20_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://dy8b7etgxn2ca" path="res://assets/3D/item/picture.png" id="21_2wuci"]
+[ext_resource type="Texture2D" uid="uid://brnhbea0141tn" path="res://assets/3D/item/pocketwatch.png" id="22_iruf7"]
+[ext_resource type="Texture2D" uid="uid://qq8asgxrwiqs" path="res://assets/3D/item/dogtag.png" id="23_j5n4i"]
+[ext_resource type="Texture2D" uid="uid://cajkaayvkk6r6" path="res://assets/3D/item/book.png" id="24_634y6"]
+[ext_resource type="Texture2D" uid="uid://porvguxpm744" path="res://assets/UI/eye_insanity.png" id="25_efrwb"]
+[ext_resource type="Texture2D" uid="uid://dbnt0ld7rmxvo" path="res://assets/UI/stamina.png" id="26_hiqhm"]
+[ext_resource type="Script" uid="uid://cq6uoo8gmf27g" path="res://qte_hint.gd" id="28_2wuci"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
 radius = 0.25
@@ -62,7 +80,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 resource_name = "ads_up"
-length = 0.4
+length = 0.43333334
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -148,6 +166,44 @@ _data = {
 &"idle": SubResource("Animation_hqtel")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_nvl01"]
+viewport_path = NodePath("CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport")
+
+[sub_resource type="Gradient" id="Gradient_urp6f"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.05490196, 0.05490196, 0.05490196, 0.60784316)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6f8o3"]
+gradient = SubResource("Gradient_urp6f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bhunq"]
+font_size = 31
+
+[sub_resource type="Gradient" id="Gradient_bwjto"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.3, 0.117, 0.117, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qr0ht"]
+gradient = SubResource("Gradient_bwjto")
+width = 93
+height = 51
+
+[sub_resource type="SystemFont" id="SystemFont_qr0ht"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_riqys"]
+line_spacing = 3.275
+font = SubResource("SystemFont_qr0ht")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_sn0t7"]
+font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bhunq"]
+bg_color = Color(0.1034, 0.10791, 0.11, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f8o3"]
+bg_color = Color(0.5208, 0.55412, 0.56, 1)
+
 [node name="player" type="CharacterBody3D" unique_id=664553519]
 collision_layer = 5
 
@@ -156,14 +212,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000598073, 0.0018787086, -0
 shape = SubResource("CapsuleShape3D_riqys")
 
 [node name="mesh" type="MeshInstance3D" parent="collision" unique_id=2066215904]
+visible = false
 mesh = SubResource("CapsuleMesh_bhunq")
+
+[node name="01MainChar_Marcus2" parent="collision" unique_id=2010830001 instance=ExtResource("1_nvl01")]
+transform = Transform3D(-1.095, 0, -9.572794e-08, 0, 1.095, 0, 9.572794e-08, 0, -1.095, 0.0024098158, -0.9951978, -0.036161363)
 
 [node name="Manager" type="Node3D" parent="." unique_id=1645068689]
 
 [node name="CameraCtrl" type="Node3D" parent="Manager" unique_id=1179721897 node_paths=PackedStringArray("player", "cam")]
 script = ExtResource("1_b26j0")
 player = NodePath("../..")
-cam = NodePath("../../CamCrouchPivot/playerCam")
+cam = NodePath("../../CamCrouchPivot/WorldCam")
 
 [node name="MovementSystem" type="Node3D" parent="Manager" unique_id=1735917536 node_paths=PackedStringArray("interactor_manager", "default_movement_state", "player")]
 script = ExtResource("2_i3pqv")
@@ -220,24 +280,367 @@ metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="ADSInteraction" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=2095033685 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("9_n7ghd")
-animation_player = NodePath("../../../../CamCrouchPivot/playerCam/gunVisualPivot/gun/AnimationPlayer")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
 ads_up = &"ads_up"
 ads_down = &"ads_down"
 activate_key = &"aim_down_sight"
 metadata/_custom_type_script = "uid://decutsrjlb5io"
 
+[node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452 node_paths=PackedStringArray("interaction_ray")]
+script = ExtResource("11_urp6f")
+interaction_ray = NodePath("../../../CamCrouchPivot/WorldCam/interactRay")
+metadata/_custom_type_script = "uid://dxehxkxroe1j1"
+
+[node name="NoteInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=729974195 node_paths=PackedStringArray("note_manager")]
+script = ExtResource("12_bwjto")
+note_manager = NodePath("../../../../NoteManager")
+activate_key = &"event"
+metadata/_custom_type_script = "uid://c5gqs5ubr82f4"
+
+[node name="SearchInteraction" type="Node" parent="Manager/InteractorManager/UtilityInteractor" unique_id=1805491755 node_paths=PackedStringArray("utility_interactor", "cursor_manager", "inventory_manager")]
+script = ExtResource("13_q13i1")
+utility_interactor = NodePath("..")
+cursor_manager = NodePath("../../../CursorManager")
+inventory_manager = NodePath("../../../InventoryManager")
+search_duration = 8.0
+qte_chance = 13.0
+activate_key = &"event"
+metadata/_custom_type_script = "uid://c5gqs5ubr82f4"
+
+[node name="CursorManager" type="CanvasLayer" parent="Manager" unique_id=610399320]
+script = ExtResource("13_606se")
+
+[node name="Crosshair" type="Control" parent="Manager/CursorManager" unique_id=1301160269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("14_u1c27")
+
+[node name="InventoryManager" type="Node3D" parent="Manager" unique_id=666717420]
+script = ExtResource("15_op7ga")
+
 [node name="CamCrouchPivot" type="Node3D" parent="." unique_id=433111817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
 
-[node name="playerCam" type="Camera3D" parent="CamCrouchPivot" unique_id=190024261]
+[node name="WorldCam" type="Camera3D" parent="CamCrouchPivot" unique_id=190024261]
+cull_mask = 1048573
 
-[node name="gunVisualPivot" type="Node3D" parent="CamCrouchPivot/playerCam" unique_id=169449130]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CamCrouchPivot/WorldCam" unique_id=337842440]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
-[node name="gun" type="MeshInstance3D" parent="CamCrouchPivot/playerCam/gunVisualPivot" unique_id=1031976048]
+[node name="WeaponViewport" type="SubViewport" parent="CamCrouchPivot/WorldCam/SubViewportContainer" unique_id=1814202829]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4293918722
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="WeaponCam" type="Camera3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport" unique_id=1066641502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
+
+[node name="gunVisualPivot" type="Node3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport" unique_id=169449130]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
+
+[node name="gun" type="MeshInstance3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=1031976048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57740253, -0.23955393, -0.77955365)
+layers = 2
 mesh = ExtResource("1_4flbx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CamCrouchPivot/playerCam/gunVisualPivot/gun" unique_id=1225596494]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun" unique_id=1225596494]
 libraries/ = SubResource("AnimationLibrary_sweqy")
 
-[node name="ADSPoint" type="Marker3D" parent="CamCrouchPivot/playerCam/gunVisualPivot" unique_id=2082324859]
+[node name="ADSPoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun" unique_id=2082324859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0.28438532)
+
+[node name="Gunpoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/ADSPoint" unique_id=729084497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6387266)
+
+[node name="interactRay" type="RayCast3D" parent="CamCrouchPivot/WorldCam" unique_id=1234893791]
+target_position = Vector3(0, 0, -3)
+collision_mask = 511
+
+[node name="WeaponOverlay" type="CanvasLayer" parent="." unique_id=1588858666]
+
+[node name="TextureRect" type="TextureRect" parent="WeaponOverlay" unique_id=554985892]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_nvl01")
+expand_mode = 1
+
+[node name="NoteManager" type="CanvasLayer" parent="." unique_id=1331840480]
+layer = 10
+script = ExtResource("12_ivps1")
+
+[node name="NoteUI" type="Control" parent="NoteManager" unique_id=1820681196]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dimBg" type="ColorRect" parent="NoteManager/NoteUI" unique_id=1046750875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.043137256, 0.0627451, 0.09019608, 0.5411765)
+
+[node name="NotePanel" type="Control" parent="NoteManager/NoteUI" unique_id=568849594]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -196.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaperTexture" type="TextureRect" parent="NoteManager/NoteUI/NotePanel" unique_id=972632567]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -212.0
+offset_right = 224.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_6f8o3")
+
+[node name="Title" type="Label" parent="NoteManager/NoteUI/NotePanel/PaperTexture" unique_id=1013055548]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 33.0
+offset_bottom = -4.0
+grow_horizontal = 2
+text = "Title"
+label_settings = SubResource("LabelSettings_bhunq")
+
+[node name="Content" type="RichTextLabel" parent="NoteManager/NoteUI/NotePanel" unique_id=103725153]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33333334
+anchor_right = 0.6736111
+anchor_bottom = 1.0
+offset_bottom = 1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "o[k[[d"
+fit_content = true
+metadata/_edit_use_anchors_ = true
+
+[node name="CloseButton" type="Button" parent="NoteManager/NoteUI/NotePanel" unique_id=1559211619]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+icon = SubResource("GradientTexture2D_qr0ht")
+clip_text = true
+icon_alignment = 1
+
+[node name="UtilityCanvas" type="CanvasLayer" parent="." unique_id=53385477]
+layer = 15
+
+[node name="Bars2" type="VBoxContainer" parent="UtilityCanvas" unique_id=1944467571]
+offset_left = 16.0
+offset_top = 544.0
+offset_right = 140.0
+offset_bottom = 638.0
+
+[node name="bar" type="HBoxContainer" parent="UtilityCanvas/Bars2" unique_id=1677842595]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UtilityCanvas/Bars2/bar" unique_id=662659981]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="TextureRect" type="TextureRect" parent="UtilityCanvas/Bars2/bar/MarginContainer" unique_id=1977555770]
+custom_minimum_size = Vector2(60, 45)
+custom_maximum_size = Vector2(60, 60)
+propagate_maximum_size = true
+layout_mode = 2
+texture = ExtResource("25_efrwb")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="UtilityCanvas/Bars2/bar" unique_id=1007963678]
+custom_minimum_size = Vector2(50, 10)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+
+[node name="bar2" type="HBoxContainer" parent="UtilityCanvas/Bars2" unique_id=1348766516]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UtilityCanvas/Bars2/bar2" unique_id=1201479899]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="TextureRect" type="TextureRect" parent="UtilityCanvas/Bars2/bar2/MarginContainer" unique_id=2136276791]
+custom_minimum_size = Vector2(60, 45)
+custom_maximum_size = Vector2(60, 60)
+propagate_maximum_size = true
+layout_mode = 2
+texture = ExtResource("26_hiqhm")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="UtilityCanvas/Bars2/bar2" unique_id=1939259237]
+custom_minimum_size = Vector2(50, 10)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 22
+
+[node name="InventoryUI" type="Control" parent="UtilityCanvas" unique_id=32648185 node_paths=PackedStringArray("inv_manager")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("19_qtqh7")
+inv_manager = NodePath("../../Manager/InventoryManager")
+
+[node name="inventory" type="VBoxContainer" parent="UtilityCanvas/InventoryUI" unique_id=231382684]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 81.0
+offset_bottom = 348.0
+
+[node name="bullet_ui" type="HBoxContainer" parent="UtilityCanvas/InventoryUI/inventory" unique_id=1435778021]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="UtilityCanvas/InventoryUI/inventory/bullet_ui" unique_id=1325040865]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("19_7hik5")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UtilityCanvas/InventoryUI/inventory/bullet_ui" unique_id=144598100]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_riqys")
+
+[node name="match" type="HBoxContainer" parent="UtilityCanvas/InventoryUI/inventory" unique_id=532446341]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="UtilityCanvas/InventoryUI/inventory/match" unique_id=2104129483]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("20_qtqh7")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UtilityCanvas/InventoryUI/inventory/match" unique_id=1582695925]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_riqys")
+
+[node name="picture" type="TextureRect" parent="UtilityCanvas/InventoryUI/inventory" unique_id=1037811440]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("21_2wuci")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="pocketwatch" type="TextureRect" parent="UtilityCanvas/InventoryUI/inventory" unique_id=1976016810]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("22_iruf7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="doctag" type="TextureRect" parent="UtilityCanvas/InventoryUI/inventory" unique_id=561885737]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("23_j5n4i")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="book" type="TextureRect" parent="UtilityCanvas/InventoryUI/inventory" unique_id=1680276413]
+custom_minimum_size = Vector2(40, 40)
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("24_634y6")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="QTEhint" type="Control" parent="UtilityCanvas" unique_id=1853787110 node_paths=PackedStringArray("search_interaction")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 60.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("28_2wuci")
+search_interaction = NodePath("../../Manager/InteractorManager/UtilityInteractor/SearchInteraction")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UtilityCanvas/QTEhint" unique_id=352286555]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Prompt" type="Label" parent="UtilityCanvas/QTEhint/VBoxContainer" unique_id=708687823]
+layout_mode = 2
+text = "press"
+label_settings = SubResource("LabelSettings_sn0t7")
+
+[node name="timebar" type="ProgressBar" parent="UtilityCanvas/QTEhint/VBoxContainer" unique_id=387650862]
+custom_minimum_size = Vector2(80, 10)
+custom_maximum_size = Vector2(80, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_bhunq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6f8o3")
+rounded = true
+show_percentage = false
