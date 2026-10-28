@@ -87,7 +87,7 @@ func request(_delta: float) -> void:
 func activate() -> void:
 	if is_active() or is_cooldown():
 		return
-
+	
 	_active = true
 	on_active()
 

@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/Key Item Pick Up.wav-056d6b4b6e70af6268c6ef59
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

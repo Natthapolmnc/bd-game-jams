@@ -12,6 +12,9 @@ class_name Shoot
 var blend_time: float = 0.05
 
 
+signal shot()
+
+
 func activate()->void:
 	if is_active() or is_cooldown():
 		return
@@ -26,6 +29,8 @@ func activate()->void:
 func on_active() -> void:
 	if not is_instance_valid(animation_player):
 		return
+
+	shot.emit()
 
 	if animation_player.has_animation(fire_ads):
 		animation_player.play(fire_ads, blend_time)

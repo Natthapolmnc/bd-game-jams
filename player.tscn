@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://uwupiiijdsm3" path="res://scripts/player/action_system/actual/interaction/toggles_intr/ADS_cont.gd" id="9_n7ghd"]
 [ext_resource type="Script" uid="uid://c3uvu21k33gve" path="res://scripts/player/action_system/actual/interactor/utilitiy_interactor.gd" id="11_2wuci"]
 [ext_resource type="Script" uid="uid://cy3qpyevvny13" path="res://scripts/player/action_system/actual/interaction/discreate_intr/shoot.gd" id="11_iruf7"]
+[ext_resource type="Script" uid="uid://qviqjpn67gcu" path="res://scripts/player/action_system/actual/interaction/cont_intr/reload.gd" id="12_76oay"]
 [ext_resource type="Script" uid="uid://dw1wv1y8ec78x" path="res://scripts/player/action_system/actual/interaction/discrt_intr/note_intr.gd" id="12_bwjto"]
 [ext_resource type="Script" uid="uid://cmnk4a6uqn8c3" path="res://scripts/notes/note_manager.gd" id="12_ivps1"]
 [ext_resource type="Script" uid="uid://bdrg0ocsalp01" path="res://scripts/player/cursor_management/cursor_manager.gd" id="13_606se"]
@@ -27,6 +28,7 @@
 [ext_resource type="Script" uid="uid://0wd3x2uxdwn5" path="res://scripts/player/resource_system/actual/stamina_bar.gd" id="20_tkwlq"]
 [ext_resource type="Texture2D" uid="uid://dy8b7etgxn2ca" path="res://assets/3D/item/picture.png" id="21_2wuci"]
 [ext_resource type="PackedScene" uid="uid://bdcb2eius26nx" path="res://scenes/mesh_scene/walter_p_38.tscn" id="21_tkwlq"]
+[ext_resource type="Script" uid="uid://c3tnkubi32ef0" path="res://scripts/player/resource_system/actual/finite_resource.gd" id="22_b4uyv"]
 [ext_resource type="Texture2D" uid="uid://brnhbea0141tn" path="res://assets/3D/item/pocketwatch.png" id="22_iruf7"]
 [ext_resource type="Script" uid="uid://ck4gjp2w85qxr" path="res://scripts/UI/bars.gd" id="23_hiqhm"]
 [ext_resource type="Texture2D" uid="uid://qq8asgxrwiqs" path="res://assets/3D/item/dogtag.png" id="23_j5n4i"]
@@ -34,6 +36,26 @@
 [ext_resource type="Texture2D" uid="uid://porvguxpm744" path="res://assets/UI/Bar/eye_insanity.png" id="25_efrwb"]
 [ext_resource type="Texture2D" uid="uid://dbnt0ld7rmxvo" path="res://assets/UI/Bar/stamina.png" id="26_hiqhm"]
 [ext_resource type="Script" uid="uid://cq6uoo8gmf27g" path="res://scripts/UI/qte_hint.gd" id="28_2wuci"]
+[ext_resource type="Script" uid="uid://mwsj5t8lipdf" path="res://scripts/scenes/audio/player_audio_manager.gd" id="35_ibah8"]
+[ext_resource type="Script" uid="uid://cqyrgw7731sp7" path="res://scripts/scenes/audio/sub_managers/footstep_manager.gd" id="36_3iwfv"]
+[ext_resource type="AudioStream" uid="uid://bqvbo4ua3e1hp" path="res://assets/Audio/SFX/Footstep/Footstep01.wav" id="37_qwsg1"]
+[ext_resource type="AudioStream" uid="uid://cqx8hwasatidb" path="res://assets/Audio/SFX/Footstep/Footstep02.wav" id="38_1xqrm"]
+[ext_resource type="AudioStream" uid="uid://d2syqaxxctust" path="res://assets/Audio/SFX/Footstep/Footstep03.wav" id="39_bfour"]
+[ext_resource type="AudioStream" uid="uid://cvd4pqx815vsx" path="res://assets/Audio/SFX/Footstep/Footstep04.wav" id="40_8gr2b"]
+[ext_resource type="AudioStream" uid="uid://cdcuurhqgc75g" path="res://assets/Audio/SFX/Footstep/Footstep05.wav" id="41_vl8ci"]
+[ext_resource type="AudioStream" uid="uid://bqtlyvqcra286" path="res://assets/Audio/SFX/Footstep/Footstep06.wav" id="42_ieltc"]
+[ext_resource type="AudioStream" uid="uid://dvyf3pt6o8ps1" path="res://assets/Audio/SFX/Trap/Trap Dismantling.wav" id="43_3iwfv"]
+[ext_resource type="Script" uid="uid://bkpaliotjg0k4" path="res://scripts/scenes/audio/sub_managers/gun_manager.gd" id="43_ajfva"]
+[ext_resource type="AudioStream" uid="uid://ew82q437uryn" path="res://assets/Audio/SFX/Gun/Gun Shot.wav" id="44_5ef02"]
+[ext_resource type="AudioStream" uid="uid://dsjr2wbakwvkq" path="res://assets/Audio/SFX/Item/Key Item Pick Up.wav" id="44_vl8ci"]
+[ext_resource type="AudioStream" uid="uid://cy3ews1m5jmkj" path="res://assets/Audio/SFX/Item/Normal Item Pick Up.wav" id="45_ieltc"]
+[ext_resource type="AudioStream" uid="uid://ck6l6re8rx2gw" path="res://assets/Audio/SFX/Gun/Cooldown.wav" id="45_pfmca"]
+[ext_resource type="AudioStream" uid="uid://dooocsxaf2cua" path="res://assets/Audio/SFX/Gun/Cooldown Done.wav" id="46_76oay"]
+[ext_resource type="AudioStream" uid="uid://c3ao7c5w5l6ob" path="res://assets/Audio/SFX/Item/Container Interact.wav" id="46_fddr8"]
+[ext_resource type="AudioStream" uid="uid://dvjqqkf22wh0q" path="res://assets/Audio/SFX/Item/Curse Cleansing.wav" id="47_oybyf"]
+[ext_resource type="AudioStream" uid="uid://bbvji8b58x2bb" path="res://assets/Audio/SFX/Insane/Medium.wav" id="48_ajfva"]
+[ext_resource type="AudioStream" uid="uid://dma6a2hry3jh8" path="res://assets/Audio/SFX/Hiding/Hiding in Locker.wav" id="53_pfmca"]
+[ext_resource type="AudioStream" uid="uid://bo6b52c8ofs2g" path="res://assets/Audio/SFX/Hiding/Hiding Under Bed.wav" id="54_76oay"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_riqys"]
 radius = 0.25
@@ -214,6 +236,17 @@ bg_color = Color(0.1034, 0.10791, 0.11, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6f8o3"]
 bg_color = Color(0.5208, 0.55412, 0.56, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_12j5o"]
+random_pitch = 1.0116194
+random_volume_offset_db = 1.0
+streams_count = 6
+stream_0/stream = ExtResource("37_qwsg1")
+stream_1/stream = ExtResource("38_1xqrm")
+stream_2/stream = ExtResource("39_bfour")
+stream_3/stream = ExtResource("40_8gr2b")
+stream_4/stream = ExtResource("41_vl8ci")
+stream_5/stream = ExtResource("42_ieltc")
+
 [node name="player" type="CharacterBody3D" unique_id=664553519]
 collision_layer = 5
 
@@ -288,7 +321,7 @@ metadata/_custom_type_script = "uid://dxehxkxroe1j1"
 
 [node name="ADSInteraction" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=2095033685 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("9_n7ghd")
-animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38/AnimationPlayer")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
 ads_up = &"ads_up"
 ads_down = &"ads_down"
 activate_key = &"aim_down_sight"
@@ -297,9 +330,16 @@ metadata/_custom_type_script = "uid://decutsrjlb5io"
 
 [node name="Shoot" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=1116245431 node_paths=PackedStringArray("animation_player")]
 script = ExtResource("11_iruf7")
-animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38/AnimationPlayer")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
 activate_key = &"shoot"
 metadata/_custom_type_script = "uid://cy3qpyevvny13"
+
+[node name="Reload" type="Node" parent="Manager/InteractorManager/GunInteractor" unique_id=1320865592 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("12_76oay")
+animation_player = NodePath("../../../../CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/AnimationPlayer")
+action_time = 200.0
+activate_key = &"reload"
+metadata/_custom_type_script = "uid://qviqjpn67gcu"
 
 [node name="UtilityInteractor" type="Node" parent="Manager/InteractorManager" unique_id=1772994452]
 script = ExtResource("11_2wuci")
@@ -358,6 +398,9 @@ fill_speed = 8.0
 deplete_speed = 5.0
 metadata/_custom_type_script = "uid://0wd3x2uxdwn5"
 
+[node name="FiniteResource" type="Node" parent="Manager/ResourceManager" unique_id=2049460858]
+script = ExtResource("22_b4uyv")
+
 [node name="CamCrouchPivot" type="Node3D" parent="." unique_id=433111817]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
 
@@ -388,23 +431,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.25)
 
 [node name="gun" type="MeshInstance3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=215671756]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57740253, -0.23955393, -0.77955365)
-visible = false
 layers = 2
 mesh = ExtResource("1_4flbx")
 
-[node name="WalterP38" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=625000762 instance=ExtResource("21_tkwlq")]
-transform = Transform3D(-0.9466493, 0.05983397, -0.3166623, 0, 0.9826128, 0.18566662, 0.32226563, 0.17576118, -0.9301897, 0.19143176, -0.23955393, -0.2957235)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38" unique_id=1630014946]
-root_node = NodePath("../../gun")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun" unique_id=1630014946]
 libraries/ = SubResource("AnimationLibrary_sweqy")
 
-[node name="ADSPoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38" unique_id=1261774635]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57740253, -0.08955392, -0.49516833)
+[node name="ADSPoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun" unique_id=1261774635]
+transform = Transform3D(-0.95441294, -0.05541956, 0.29329973, 2.1645823e-09, 0.9826128, 0.18566664, -0.29848957, 0.17720261, -0.93781835, -1.0480466, -0.09209049, 0.846797)
 visible = false
 
-[node name="Gunpoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/WalterP38/ADSPoint" unique_id=982837912]
+[node name="Gunpoint" type="Marker3D" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot/gun/ADSPoint" unique_id=982837912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6387266)
+visible = false
+
+[node name="WalterP38" parent="CamCrouchPivot/WorldCam/SubViewportContainer/WeaponViewport/gunVisualPivot" unique_id=625000762 instance=ExtResource("21_tkwlq")]
+transform = Transform3D(-0.95441294, -0.05541956, 0.29329973, 2.1645823e-09, 0.9826128, 0.18566664, -0.29848957, 0.17720261, -0.93781835, 0.22070605, -0.15171134, -0.20891681)
 visible = false
 
 [node name="interactRay" type="RayCast3D" parent="CamCrouchPivot/WorldCam" unique_id=1234893791]
@@ -689,3 +731,70 @@ theme_override_styles/background = SubResource("StyleBoxFlat_bhunq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6f8o3")
 rounded = true
 show_percentage = false
+
+[node name="AudioPlayerManager" type="Node3D" parent="." unique_id=2068543767]
+script = ExtResource("35_ibah8")
+
+[node name="Footstep" type="Node3D" parent="AudioPlayerManager" unique_id=348317881]
+script = ExtResource("36_3iwfv")
+
+[node name="Footstep" type="AudioStreamPlayer3D" parent="AudioPlayerManager/Footstep" unique_id=1579511845]
+stream = SubResource("AudioStreamRandomizer_12j5o")
+bus = &"SFX"
+
+[node name="FootstepTimer" type="Timer" parent="AudioPlayerManager/Footstep" unique_id=775619828]
+one_shot = true
+
+[node name="Gun" type="Node3D" parent="AudioPlayerManager" unique_id=1849005026]
+script = ExtResource("43_ajfva")
+reload_time = 3.5
+
+[node name="GunShot" type="AudioStreamPlayer3D" parent="AudioPlayerManager/Gun" unique_id=311578048]
+stream = ExtResource("44_5ef02")
+bus = &"SFX"
+
+[node name="Cooldown" type="AudioStreamPlayer3D" parent="AudioPlayerManager/Gun" unique_id=291257668]
+stream = ExtResource("45_pfmca")
+bus = &"SFX"
+
+[node name="CooldownDone" type="AudioStreamPlayer3D" parent="AudioPlayerManager/Gun" unique_id=598570860]
+stream = ExtResource("46_76oay")
+bus = &"SFX"
+
+[node name="CooldownTimer" type="Timer" parent="AudioPlayerManager/Gun" unique_id=187370217]
+
+[node name="TrapDisarming" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=1584800432]
+stream = ExtResource("43_3iwfv")
+bus = &"SFX"
+
+[node name="KeyItemPickup" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=462767210]
+stream = ExtResource("44_vl8ci")
+volume_db = -6.701
+bus = &"SFX"
+
+[node name="ItemPickup" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=50120358]
+stream = ExtResource("45_ieltc")
+bus = &"SFX"
+
+[node name="ContainerInteract" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=868752924]
+stream = ExtResource("46_fddr8")
+bus = &"SFX"
+
+[node name="CurseCleansing" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=81728175]
+stream = ExtResource("47_oybyf")
+bus = &"SFX"
+
+[node name="HeartBeating" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=1492831969]
+stream = ExtResource("48_ajfva")
+bus = &"SFX"
+
+[node name="HeartBeatTimer" type="Timer" parent="AudioPlayerManager/HeartBeating" unique_id=337409306]
+one_shot = true
+
+[node name="HidingInLocker" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=2068466147]
+stream = ExtResource("53_pfmca")
+bus = &"SFX"
+
+[node name="HidingUnderBed" type="AudioStreamPlayer3D" parent="AudioPlayerManager" unique_id=1833606793]
+stream = ExtResource("54_76oay")
+bus = &"SFX"

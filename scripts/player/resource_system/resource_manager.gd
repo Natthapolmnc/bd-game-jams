@@ -4,10 +4,12 @@ extends Node
 
 var insanity_bar: InsanityBar
 var stamina_bar: StaminaBar
+var finite_resource: FiniteResource
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	finite_resource = $FiniteResource
 	insanity_bar = $InsanityBar
 	stamina_bar = $StaminaBar
 
@@ -15,6 +17,8 @@ func _ready() -> void:
 # -------------------------
 # INTERFACE
 # -------------------------
+
+# > > > > > > > > > > Resource Bar < < < < < < < < < <
 
 func get_stamina()->float:
 	return stamina_bar.current_value
@@ -32,6 +36,11 @@ func toggle_insanity() -> void:
 
 func check_insanity_stage() -> void:
 	return insanity_bar.check_stage() # Return 0, 1, 2 | { NORMAL, ABNORMAL, INSANE }
+
+
+# > > > > > > > > > > Finite Resource < < < < < < < < < <
+
+
 
 
 # -------------------------

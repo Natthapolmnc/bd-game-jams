@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://be6tl1flgenkf"]
+
+[ext_resource type="PackedScene" uid="uid://s4v11y8h4erm" path="res://assets/3D/glbs/interacterble/Trap.glb" id="1_n152t"]
+
+[node name="Trap2" unique_id=1886853798 instance=ExtResource("1_n152t")]

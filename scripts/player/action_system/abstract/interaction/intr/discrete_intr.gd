@@ -11,7 +11,7 @@ func is_active()->bool:
 	
 func activate()->void:
 	super()
-	cooldown_time=action_time
+	cooldown_time = action_time
 
 		
 func perform(delta_tf:float)->void:

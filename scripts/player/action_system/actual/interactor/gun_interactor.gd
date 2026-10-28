@@ -7,6 +7,9 @@ class_name GunInteractor
 
 var equipped: bool = false
 var aiming: bool = false
+var reloading: bool = false
+
+@onready var inventory_manager: InventoryManager = $"../../InventoryManager"
 
 
 func _ready() -> void:
@@ -26,6 +29,7 @@ func _collect_interactions() -> void:
 			interactions.append(child)
 		if child is ADSInteraction:
 			child.toggle_aim.connect(toggle_ads)
+			continue
 
 
 func toggle_ads(state: bool) -> void:
@@ -50,6 +54,11 @@ func is_aiming() -> bool:
 	return aiming
 
 
+func _is_reload_valid() -> bool:
+	return (inventory_manager.has_item("bullet")
+			and inventory_manager.has_less_than("loaded_bullet", 6))
+
+
 # -------------------------
 # INPUT REQUESTS
 # -------------------------
@@ -67,7 +76,10 @@ func _state_handling(delta: float) -> void:
 		if not intrt.input_requested():
 			continue
 
-		if intrt is Shoot and intrt.input_requested():
+		if (
+			(intrt is Shoot) and (intrt.input_requested()) and (not cur_act is Reload)
+			and (is_aiming())):
+			intrt.shot.connect(inventory_manager.remove_item.bind("loaded_bullet", 1), CONNECT_ONE_SHOT)
 			cur_act = intrt
 
 		# Current interaction receives its own input.
@@ -160,7 +172,7 @@ func _process(delta: float) -> void:
 	if not enabled:
 		_stop_current()
 		return
-
+	
 	# Update cooldowns for every interaction.
 	for intrt in interactions:
 		if is_instance_valid(intrt):

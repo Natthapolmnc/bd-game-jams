@@ -6,10 +6,11 @@ signal inventory_changed(item_name: String, new_amount: int)
 var inventory: Dictionary[String, int] = {
 	"book": 0,
 	"dogtag": 0,
-	"match":0,
-	"picture":0,
-	"bullet": 0,
+	"match": 0,
+	"picture": 0,
+	"bullet": 1,
 	"pocketwatch": 0,
+	"loaded_bullet": 0,
 }
 
 
